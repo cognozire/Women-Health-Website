@@ -85,14 +85,14 @@ def mainContent():
         else:
             st.write("There is nothing to show!! Please add file to see data.")
      
-     footer = """
-      <div style='position: fixed; bottom: 0; width: 100%; background-color: #f5f5f5; text-align: center; font-size: 12px;'>
-          <p>Made with ❤️ by Cognozire</p>
-      </div>
-      """
+        footer = """
+        <div style='position: fixed; bottom: 0; width: 100%; background-color: #f5f5f5; text-align: center; font-size: 12px;'>
+            <p>Made with ❤️ by Cognozire</p>
+        </div>
+        """
 
-      # Add footer to page
-      st.markdown(footer, unsafe_allow_html=True)
+        # Add footer to page
+        st.markdown(footer, unsafe_allow_html=True)
        #   st.footer('Made with ❤️ by Cognozire')
 
 if __name__ == "__main__":
