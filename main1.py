@@ -82,9 +82,11 @@ def mainContent():
             top_5_features = sorted_coeffs.index[1:6]
             for i in top_5_features:
                 st.write(i)
+        st.write('Made with ❤️ by Cognozire')
 
         else:
             st.write("There is nothing to show!! Please add file to see data.")
+            st.write('Made with ❤️ by Cognozire')
 
 
 if __name__ == "__main__":
