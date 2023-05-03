@@ -85,7 +85,7 @@ def mainContent():
         else:
             st.write("There is nothing to show!! Please add file to see data.")
         
-        st.write('Made with ❤️ by Cognozire')
+    st.footer('Made with ❤️ by Cognozire')
 
 if __name__ == "__main__":
     sidebar()
