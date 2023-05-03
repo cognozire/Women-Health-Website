@@ -5,4 +5,4 @@ seaborn
 matplotlib
 plotly
 scikit-learn
-statmodels
+statsmodels==0.13.5
