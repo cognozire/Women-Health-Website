@@ -29,7 +29,6 @@ def sidebar():
                 columnList = df1.columns.values.tolist()
                 # option = st.selectbox("Select Column", columnList)
                 # st.subheader("Filters")
-                st.sidebar.write('Made with ❤️ by Cognozire')
                 opt = showGraphList()
             else:
                 st.write("File Format is not supported")
@@ -85,8 +84,16 @@ def mainContent():
                 st.write(i)
         else:
             st.write("There is nothing to show!! Please add file to see data.")
-        
- #   st.footer('Made with ❤️ by Cognozire')
+     
+     footer = """
+      <div style='position: fixed; bottom: 0; width: 100%; background-color: #f5f5f5; text-align: center; font-size: 12px;'>
+          <p>Made with ❤️ by Cognozire</p>
+      </div>
+      """
+
+      # Add footer to page
+      st.markdown(footer, unsafe_allow_html=True)
+       #   st.footer('Made with ❤️ by Cognozire')
 
 if __name__ == "__main__":
     sidebar()
