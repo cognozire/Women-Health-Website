@@ -90,10 +90,7 @@ def mainContent():
             <p>Made with ❤️ by Cognozire</p>
         </div>
         """
-
-        # Add footer to page
         st.markdown(footer, unsafe_allow_html=True)
-       #   st.footer('Made with ❤️ by Cognozire')
 
 if __name__ == "__main__":
     sidebar()
