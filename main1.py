@@ -67,7 +67,7 @@ def mainContent():
         data = pd.DataFrame()
         data["weight"] = model_fit.predict(start=51,end=57,dynamic=True)
         df['date'] = df.index
-        a = pd.DataFrame({'date': pd.date_range(start=df.date.iloc[-1], periods= 9, freq='d', closed='right')})
+        a = pd.DataFrame({'date': pd.date_range(start=df.date.iloc[-1], periods=8, freq='d', closed='right')})
         d_final = pd.DataFrame()
         d_final['Date'] = a
         d_final['Date'] = pd.to_datetime(d_final['Date']).dt.date
