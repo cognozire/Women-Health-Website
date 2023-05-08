@@ -65,7 +65,7 @@ def mainContent():
         model = ARIMA(df['Weight'],order = (2,1,2))
         model_fit = model.fit()
         data = pd.DataFrame()
-        data["weight"] = model_fit.predict(start=51,end=58,dynamic=True)
+        data["weight"] = model_fit.predict(start=51,end=57,dynamic=True)
         df['date'] = df.index
         a = pd.DataFrame({'date': pd.date_range(start=df.date.iloc[-1], periods= 9, freq='d', closed='right')})
         d_final = pd.DataFrame()
