@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 from sklearn import preprocessing
 from statsmodels.tsa.arima.model import ARIMA as ARIMA
+import plotly.express as px
 
 PAGE_CONFIG = {"page_title": "Predict Your Weight",
                "page_icon": "chart_with_upwards_trend:", "layout": "centered"}
@@ -73,6 +74,7 @@ def mainContent():
         col_list = data.weight.values.tolist()
         d_final['Estimated Weight'] = col_list
         st.write(d_final)
+        df_graph = df_o[0:19] # for line chart
 
         if opt == "Prediction":
             st.header("Top 5 features contributing to your weight are:")
@@ -81,6 +83,10 @@ def mainContent():
             top_5_features = sorted_coeffs.index[1:6]
             for i in top_5_features:
                 st.write(i)
+            st.header("Relationship between Weight and Menstrual Cycle Day")
+            fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
+            st.plotly_chart(fig)
+            
         else:
             st.write("There is nothing to show!! Please add file to see data.")
 
