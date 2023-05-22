@@ -153,12 +153,12 @@ def mainContent():
 
 if __name__ == "__main__":
     footer = """
-    <div style='position: fixed; bottom: 0; width: 100%; background-color: #f5f5f5; text-align: center; font-size: 12px;'>
+    <div style='position: fixed; bottom: 0; width: 100%; text-align: center; font-size: 12px;'>
         <p>Made with ❤️ by Cognozire</p>
     </div>
     """
     st.markdown(footer, unsafe_allow_html=True)
     sidebar()
-    st.header("Welcome to Women Daily Health Check Website!")
+    st.markdown("<h1 style='text-align: center; color: black;'>Women Daily Health Check</h1>", unsafe_allow_html=True)
     mainContent()
     
