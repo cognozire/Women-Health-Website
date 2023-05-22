@@ -9,6 +9,21 @@ PAGE_CONFIG = {"page_title": "Predict Your Weight",
                "page_icon": "chart_with_upwards_trend:", "layout": "centered"}
 st.set_page_config(**PAGE_CONFIG)
 
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("https://cdn.pixabay.com/photo/2023/02/01/21/40/pink-7761356_640.png");
+background-size: cover;
+background-position: top left;
+background-repeat: no-repeat;
+}}
+[data-testid="stHeader"] {{
+background: rgba(0,0,0,0);
+}}
+</style>
+"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 def showGraphList():
     graph = ["Prediction","Slider"]
     opt = st.radio("Prediction", graph)
