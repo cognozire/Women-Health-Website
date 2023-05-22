@@ -25,7 +25,7 @@ background: rgba(0,0,0,0);
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 def showGraphList():
-    graph = ["Prediction","Slider"]
+    graph = ["Prediction"]
     opt = st.radio("Prediction", graph)
     return opt
 
