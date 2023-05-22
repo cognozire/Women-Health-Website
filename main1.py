@@ -98,7 +98,7 @@ def mainContent():
             corr_coeffs = corr_coeffs.to_frame()
 
             
-            w = st.number_input("Enter Your Weight below")
+            w = st.number_input("Enter your weight here (lbs):")
             
             stress_cor = corr_coeffs.at["Stress level", "Weight"]
             step_cor = corr_coeffs.at["Steps", "Weight"]
