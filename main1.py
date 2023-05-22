@@ -38,7 +38,6 @@ def sidebar():
 
 
 def mainContent():
-    
     if df1 is not None:
         df_o = df1
         df_o = df_o.drop(['Actual User ID'], axis = 1)
@@ -124,7 +123,6 @@ def mainContent():
             Calorie= st.slider('Calorie', 0, 100, 0)
             w4 = w+w*((calorie_cor+(Calorie*0.001)))
             st.write("New Weight : ", w4)
-
             
         else:
             st.write("There is nothing to show!! Please add file to see data.")
@@ -137,5 +135,6 @@ if __name__ == "__main__":
     """
     st.markdown(footer, unsafe_allow_html=True)
     sidebar()
+    st.header("Welcome to Women Daily Health Check Website!")
     mainContent()
     
