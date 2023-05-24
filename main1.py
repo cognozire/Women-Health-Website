@@ -73,7 +73,7 @@ def mainContent():
             'How do you feel emotionally', 'Fiber', 'Phone before bed',
             'Menstrual cycle day', 'Menstrual flow', 'Menstrual mood', 'Bloating?',
             'Craving?', 'Water retention?', 'date', 'Weight']]
-        df_o = df_o.drop(['Height','Gender','Age','Regular cycle', 'No cycle', 'On birth control', 'Protein target', 'Carbs target', 'Fat target','Calorie accuracy'], axis = 1)
+        df_o = df_o.drop(['Height','Gender','Age','Regular cycle', 'No cycle', 'On birth control', 'Total calorie deficit per week', 'Carb accuracy', 'Protein target', 'Carbs target', 'Fat target','Calorie accuracy'], axis = 1)
         mean_weight_all = df_o['Weight'].mean(skipna=True)
         df_o['Weight'].fillna(mean_weight_all, inplace=True)
         corr = df_o.drop(['date'],axis = 1).corr(method='pearson')
