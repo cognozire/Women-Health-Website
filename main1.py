@@ -78,7 +78,7 @@ def mainContent():
         df_o['Weight'].fillna(mean_weight_all, inplace=True)
         corr = df_o.drop(['date'],axis = 1).corr(method='pearson')
         
-        st.write(df_o)
+        st.write(df_o.columns)
         
         corr['index'] = corr.index
         df = df_o.iloc[-50:,-2:]
