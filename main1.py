@@ -117,7 +117,7 @@ def mainContent():
                     break_index = index
 
             if break_index is not None:
-                df_graph = df_graph.loc[index+1:]  # Select data from break_index+1 onwards
+                df_graph = df_graph.loc[:index]  # Select data from break_index+1 onwards
 
             df_graph = df_graph.head(20)  # Select the first 20 rows
 
