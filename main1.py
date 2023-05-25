@@ -92,7 +92,7 @@ def mainContent():
         col_list = data.weight.values.tolist()
         d_final['Estimated Weight'] = col_list
         
-        df_graph = df_o[0:19] # for line chart
+        df_graph = df_o[df_o['Menstrual cycle day'].notnull()].head(20) # for line chart
 
         if opt == "Prediction":
             st.header("Weight Trend")
