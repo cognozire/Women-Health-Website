@@ -107,6 +107,7 @@ def mainContent():
             st.header("Relationship between Weight and Menstrual Cycle Day")
             
             df_graph = df_o.copy()  # Create a copy of the original DataFrame
+            df_graph = df_graph[df_graph['Menstrual cycle day'].notnull()]
             break_index = None
 
             for index, row in df_graph[::-1].iterrows():
@@ -117,7 +118,7 @@ def mainContent():
                     break_index = index
 
             if break_index is not None:
-                df_graph = df_graph.loc[:index]  # Select data from break_index+1 onwards
+                df_graph = df_graph.loc[index+1:]  # Select data from break_index+1 onwards
 
             df_graph = df_graph.head(20)  # Select the first 20 rows
 
