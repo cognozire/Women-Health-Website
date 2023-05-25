@@ -113,7 +113,7 @@ def mainContent():
                 if pd.isna(row['Menstrual cycle day']):
                     break_index = index
                     break
-                elif break_index is not None and row['Menstrual cycle day'] != df_graph.at[break_index, 'Menstrual cycle day'] - 1:
+                elif break_index is not None or row['Menstrual cycle day'] != df_graph.at[break_index, 'Menstrual cycle day'] - 1:
                     break_index = index
 
             if break_index is not None:
