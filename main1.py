@@ -107,17 +107,19 @@ def mainContent():
             st.header("Relationship between Weight and Menstrual Cycle Day")
             
             df_graph = df_o.copy()  # Create a copy of the original DataFrame
-            break_indices = []
+            break_index = None
 
-            for index, row in df_graph.iterrows():
+            for index, row in df_graph[::-1].iterrows():
                 if pd.isna(row['Menstrual cycle day']):
-                    break_indices.append(index)
+                    break_index = index
+                    break
+                elif break_index is not None and row['Menstrual cycle day'] < df_graph.at[break_index, 'Menstrual cycle day']:
+                    break_index = index
 
-            if len(break_indices) > 0:
-                last_break_index = break_indices[-1]
-                df_graph = df_graph.loc[:last_break_index]  # Select data up to the last break index
+            if break_index is not None:
+                df_graph = df_graph.loc[index+1:]  # Select data from break_index+1 onwards
 
-            df_graph = df_graph.tail(20)  # Select the last 20 rows
+            df_graph = df_graph.head(20)  # Select the first 20 rows
 
             fig = px.line(df_graph, x="Menstrual cycle day", y="Weight")
             st.plotly_chart(fig)
