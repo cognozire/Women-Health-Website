@@ -93,7 +93,7 @@ def mainContent():
         d_final['Estimated Weight'] = col_list
         df_graph = df_o.copy()
         
- #       df_graph = df_o[df_o['Menstrual cycle day'].notnull()].head(20) # for line chart
+        df_graph = df_o[df_o['Menstrual cycle day'].notnull()].tail(7) # for line chart
 
         if opt == "Prediction":
             st.header("Weight Trend")
@@ -107,24 +107,24 @@ def mainContent():
                 st.write(i)
             st.header("Relationship between Weight and Menstrual Cycle Day")
             
-            df_graph = df_o.copy()  # Create a copy of the original DataFrame
-            break_index = None
+#             df_graph = df_o.copy()  # Create a copy of the original DataFrame
+#             break_index = None
 
-            for index, row in df_graph[::-1].iterrows():
-                if pd.isna(row['Menstrual cycle day']):
-                    break_index = index
-                    break
-                elif break_index is not None or row['Menstrual cycle day'] != df_graph.at[break_index, 'Menstrual cycle day'] - 1:
-                    break_index = index
+#             for index, row in df_graph[::-1].iterrows():
+#                 if pd.isna(row['Menstrual cycle day']):
+#                     break_index = index
+#                     break
+#                 elif break_index is not None or row['Menstrual cycle day'] != df_graph.at[break_index, 'Menstrual cycle day'] - 1:
+#                     break_index = index
 
-            if break_index is not None:
-                df_graph = df_graph.loc[index+1:]  # Select data from break_index+1 onwards
+#             if break_index is not None:
+#                 df_graph = df_graph.loc[index+1:]  # Select data from break_index+1 onwards
 
-            fig = px.line(df_graph, x="Menstrual cycle day", y="Weight")
-            st.plotly_chart(fig)
-            
-#             fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
+#             fig = px.line(df_graph, x="Menstrual cycle day", y="Weight")
 #             st.plotly_chart(fig)
+            
+            fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
+            st.plotly_chart(fig)
 
         else:
             st.write("There is nothing to show!! Please add file to see data.")
