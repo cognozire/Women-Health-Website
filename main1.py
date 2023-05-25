@@ -92,7 +92,7 @@ def mainContent():
         col_list = data.weight.values.tolist()
         d_final['Estimated Weight'] = col_list
         
-        df_graph = df_o[df_o['Menstrual cycle day'].notnull()].head(20) # for line chart
+ #       df_graph = df_o[df_o['Menstrual cycle day'].notnull()].head(20) # for line chart
 
         if opt == "Prediction":
             st.header("Weight Trend")
@@ -105,49 +105,29 @@ def mainContent():
             for i in top_5_features:
                 st.write(i)
             st.header("Relationship between Weight and Menstrual Cycle Day")
-            fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
-            st.plotly_chart(fig)
-#         elif opt =="Slider":
             
-#             corr_coeffs = corr.corr()['Weight']
-#             corr_coeffs = corr_coeffs.to_frame()
+            df_graph = df_o[::-1]  # Reverse the DataFrame to start from the end
+            break_index = None  # Variable to store the index where the break occurs
 
+            for index, row in df_graph.iterrows():
+                if pd.isna(row['Menstrual cycle day']):  # Check for null values
+                    continue
+                if break_index is None or row['Menstrual cycle day'] < df_graph.at[break_index, 'Menstrual cycle day']:
+                    break_index = index
+
+            if break_index is not None:
+                df_graph = df_graph.loc[index+1:].sort_index(ascending=False).head(20)  # Select data from break_index+1 onwards
+            else:
+                df_graph = df_graph.head(20)  # No break found, select first 20 rows
+
+            df_graph = df_graph[::-1]  # Reverse the DataFrame back to the original order
+
+            fig = px.line(df_graph, x="Menstrual cycle day", y="Weight")
+            st.plotly_chart(fig)
             
-#             w = st.number_input("Enter your weight here (lbs):")
-            
-#             stress_cor = corr_coeffs.at["Stress level", "Weight"]
-#             step_cor = corr_coeffs.at["Steps", "Weight"]
-#             sleep_cor = corr_coeffs.at["Sleep hours", "Weight"]
-#             calorie_cor = corr_coeffs.at["Calorie", "Weight"]
-            
-#             stress = st.slider('Stress Level (%)', 0, 100, 0)
-# #             w1 = w+w*((stress_cor+(stress*0.001)))
-#             del_w1 = stress_cor*w
-#             w_adj1 = (stress-50)/50
-#             w1 = w + (w_adj1*del_w1)
-#             st.write("New Weight : ", 0 if stress == 0 else w1)
-  
-#             steps = st.slider('Steps (%)', 0, 100, 0)
-# #             w2 = w+w*((step_cor+(Steps*0.01)))
-#             del_w2 = step_cor*w
-#             w_adj2 = (steps-50)/50
-#             w2 = w + (w_adj2*del_w2)
-#             st.write("New Weight : ", 0 if steps == 0 else w2)
-  
-#             sleep = st.slider('Sleep (%)', 0, 100, 0)
-# #             w3 = w+w*((sleep_cor+(sleep*0.01)))
-#             del_w3 = sleep_cor*w
-#             w_adj3 = (sleep-50)/50
-#             w3 = w + (w_adj3*del_w3)
-#             st.write("New Weight : ", 0 if sleep == 0 else w3)
-  
-#             calorie = st.slider('Calorie (%)', 0, 100, 0)
-# #             w4 = w+w*((calorie_cor+(Calorie*0.01)))
-#             del_w4 = calorie_cor*w
-#             w_adj4 = (calorie-50)/50
-#             w4 = w + (w_adj4*del_w4)
-#             st.write("New Weight : ", 0 if calorie == 0 else w4)
-            
+#             fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
+#             st.plotly_chart(fig)
+
         else:
             st.write("There is nothing to show!! Please add file to see data.")
 
