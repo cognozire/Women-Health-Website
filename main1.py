@@ -91,6 +91,7 @@ def mainContent():
         d_final['Date'] = pd.to_datetime(d_final['Date']).dt.date
         col_list = data.weight.values.tolist()
         d_final['Estimated Weight'] = col_list
+        df_graph = df_o.copy()
         
  #       df_graph = df_o[df_o['Menstrual cycle day'].notnull()].head(20) # for line chart
 
@@ -118,8 +119,6 @@ def mainContent():
 
             if break_index is not None:
                 df_graph = df_graph.loc[index+1:]  # Select data from break_index+1 onwards
-
-            df_graph = df_graph.head(20)  # Select the first 20 rows
 
             fig = px.line(df_graph, x="Menstrual cycle day", y="Weight")
             st.plotly_chart(fig)
