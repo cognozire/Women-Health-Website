@@ -106,21 +106,18 @@ def mainContent():
                 st.write(i)
             st.header("Relationship between Weight and Menstrual Cycle Day")
             
-            df_graph = df_o[::-1]  # Reverse the DataFrame to start from the end
-            break_index = None  # Variable to store the index where the break occurs
+            df_graph = df_o.copy()  # Create a copy of the original DataFrame
+            break_indices = []
 
             for index, row in df_graph.iterrows():
-                if pd.isna(row['Menstrual cycle day']):  # Check for null values
-                    continue
-                if break_index is None or row['Menstrual cycle day'] < df_graph.at[break_index, 'Menstrual cycle day']:
-                    break_index = index
+                if pd.isna(row['Menstrual cycle day']):
+                    break_indices.append(index)
 
-            if break_index is not None:
-                df_graph = df_graph.loc[index+1:].sort_index(ascending=False).head(20)  # Select data from break_index+1 onwards
-            else:
-                df_graph = df_graph.head(20)  # No break found, select first 20 rows
+            if len(break_indices) > 0:
+                last_break_index = break_indices[-1]
+                df_graph = df_graph.loc[:last_break_index]  # Select data up to the last break index
 
-            df_graph = df_graph[::-1]  # Reverse the DataFrame back to the original order
+            df_graph = df_graph.tail(20)  # Select the last 20 rows
 
             fig = px.line(df_graph, x="Menstrual cycle day", y="Weight")
             st.plotly_chart(fig)
