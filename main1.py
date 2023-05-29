@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import matplotlib.pyplot as plt
 from sklearn import preprocessing
 from statsmodels.tsa.arima.model import ARIMA as ARIMA
 import plotly.express as px
@@ -124,9 +125,6 @@ def mainContent():
             
 #             fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
 #             st.plotly_chart(fig)
-
-            import pandas as pd
-            import matplotlib.pyplot as plt
 
             # Group the DataFrame by menstrual cycle day and calculate the average weight for each day
             average_weight = df_graph.groupby('Menstrual cycle day')['Weight'].mean()
