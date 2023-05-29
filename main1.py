@@ -126,24 +126,24 @@ def mainContent():
 #             fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
 #             st.plotly_chart(fig)
 
-              import pandas as pd
-              import matplotlib.pyplot as plt
+            import pandas as pd
+            import matplotlib.pyplot as plt
 
-              # Group the DataFrame by menstrual cycle day and calculate the average weight for each day
-              average_weight = df.groupby('Menstrual cycle day')['Weight'].mean()
+            # Group the DataFrame by menstrual cycle day and calculate the average weight for each day
+            average_weight = df.groupby('Menstrual cycle day')['Weight'].mean()
 
-              # Create a new DataFrame with the average weight and menstrual cycle day
-              average_df = pd.DataFrame({'Menstrual cycle day': average_weight.index, 'Average Weight': average_weight.values})
+            # Create a new DataFrame with the average weight and menstrual cycle day
+            average_df = pd.DataFrame({'Menstrual cycle day': average_weight.index, 'Average Weight': average_weight.values})
 
-              # Sort the DataFrame by menstrual cycle day
-              average_df = average_df.sort_values('Menstrual cycle day')
+            # Sort the DataFrame by menstrual cycle day
+            average_df = average_df.sort_values('Menstrual cycle day')
 
-              # Plot the histogram
-              plt.bar(average_df['Menstrual cycle day'], average_df['Average Weight'])
-              plt.xlabel('Menstrual Cycle Day')
-              plt.ylabel('Average Weight')
-              plt.title('Average Weight by Menstrual Cycle Day')
-              plt.show()
+            # Plot the histogram
+            plt.bar(average_df['Menstrual cycle day'], average_df['Average Weight'])
+            plt.xlabel('Menstrual Cycle Day')
+            plt.ylabel('Average Weight')
+            plt.title('Average Weight by Menstrual Cycle Day')
+            plt.show()
 
         else:
             st.write("There is nothing to show!! Please add file to see data.")
