@@ -92,7 +92,7 @@ def mainContent():
         col_list = data.weight.values.tolist()
         d_final['Estimated Weight'] = col_list
         df_graph = df_o.copy()
-        df_graph = df_o[df_o['Menstrual cycle day'].notnull()].tail(10) # for line chart
+#        df_graph = df_o[df_o['Menstrual cycle day'].notnull()].tail(10) # for line chart
 
         if opt == "Prediction":
             st.header("Weight Trend")
@@ -129,7 +129,7 @@ def mainContent():
             import matplotlib.pyplot as plt
 
             # Group the DataFrame by menstrual cycle day and calculate the average weight for each day
-            average_weight = df.groupby('Menstrual cycle day')['Weight'].mean()
+            average_weight = df_graph.groupby('Menstrual cycle day')['Weight'].mean()
 
             # Create a new DataFrame with the average weight and menstrual cycle day
             average_df = pd.DataFrame({'Menstrual cycle day': average_weight.index, 'Average Weight': average_weight.values})
@@ -137,12 +137,14 @@ def mainContent():
             # Sort the DataFrame by menstrual cycle day
             average_df = average_df.sort_values('Menstrual cycle day')
 
-            # Plot the histogram
-            plt.bar(average_df['Menstrual cycle day'], average_df['Average Weight'])
-            plt.xlabel('Menstrual Cycle Day')
-            plt.ylabel('Average Weight')
-            plt.title('Average Weight by Menstrual Cycle Day')
-            plt.show()
+            fig, ax = plt.subplots()
+            ax.bar(average_df['menstrual_cycle_day'], average_df['average_weight'])
+            ax.set_xlabel('Menstrual Cycle Day')
+            ax.set_ylabel('Average Weight')
+            ax.set_title('Average Weight by Menstrual Cycle Day')
+
+            # Display the plot in Streamlit
+            st.pyplot(fig)
 
         else:
             st.write("There is nothing to show!! Please add file to see data.")
