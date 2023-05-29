@@ -125,6 +125,12 @@ def mainContent():
             
 #             fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
 #             st.plotly_chart(fig)
+            def convert_menstrual_cycle_day(day):
+              converted_day = int((day / 365) * 31)
+              return converted_day
+
+            # Example usage
+            df['menstrual_cycle_day'] = df['menstrual_cycle_day'].apply(convert_menstrual_cycle_day)
 
             average_weight = df_graph.groupby('Menstrual cycle day')['Weight'].mean().reset_index()
 
