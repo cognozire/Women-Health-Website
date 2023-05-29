@@ -126,7 +126,10 @@ def mainContent():
 #             fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
 #             st.plotly_chart(fig)
             def convert_menstrual_cycle_day(day):
-              converted_day = int((day / 365) * 31)
+              if day>31:
+                converted_day = int((day / 365) * 31)
+              else:
+                converted_day = day
               return converted_day
 
             df_graph['Menstrual cycle day'] = df_graph['Menstrual cycle day'].fillna(0)
