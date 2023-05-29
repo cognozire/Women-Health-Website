@@ -130,7 +130,7 @@ def mainContent():
               return converted_day
 
             # Example usage
-            df['menstrual_cycle_day'] = df['menstrual_cycle_day'].apply(convert_menstrual_cycle_day)
+            df_graph['Menstrual cycle day'] = df_graph['Menstrual cycle day'].apply(convert_menstrual_cycle_day)
 
             average_weight = df_graph.groupby('Menstrual cycle day')['Weight'].mean().reset_index()
 
