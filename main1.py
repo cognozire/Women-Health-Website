@@ -135,14 +135,20 @@ def mainContent():
             # Sort the DataFrame by menstrual cycle day
             average_df = average_df.sort_values('Menstrual cycle day')
 
-            fig, ax = plt.subplots()
-            ax.bar(average_df['Menstrual cycle day'], average_df['Average Weight'])
-            ax.set_xlabel('Menstrual Cycle Day')
-            ax.set_ylabel('Average Weight')
-            ax.set_title('Average Weight by Menstrual Cycle Day')
+            # Plot the histogram using Plotly
+            fig = px.bar(average_weight, x='Menstrual cycle dayy', y='Weight', labels={'Menstrual cycle day': 'Menstrual Cycle Day', 'Weight': 'Average Weight'},
+                         title='Average Weight by Menstrual Cycle Day')
+            
+            st.plotly_chart(fig)
 
-            # Display the plot in Streamlit
-            st.pyplot(fig)
+#             fig, ax = plt.subplots()
+#             ax.bar(average_df['Menstrual cycle day'], average_df['Average Weight'])
+#             ax.set_xlabel('Menstrual Cycle Day')
+#             ax.set_ylabel('Average Weight')
+#             ax.set_title('Average Weight by Menstrual Cycle Day')
+
+#             # Display the plot in Streamlit
+#             st.pyplot(fig)
 
         else:
             st.write("There is nothing to show!! Please add file to see data.")
