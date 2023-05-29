@@ -136,7 +136,7 @@ def mainContent():
             average_df = average_df.sort_values('Menstrual cycle day')
 
             fig, ax = plt.subplots()
-            ax.bar(average_df['menstrual_cycle_day'], average_df['average_weight'])
+            ax.bar(average_df['Menstrual cycle day'], average_df['Average Weight'])
             ax.set_xlabel('Menstrual Cycle Day')
             ax.set_ylabel('Average Weight')
             ax.set_title('Average Weight by Menstrual Cycle Day')
