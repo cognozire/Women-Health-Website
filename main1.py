@@ -126,19 +126,13 @@ def mainContent():
 #             fig = px.line(df_graph, x = "Menstrual cycle day",y = "Weight")
 #             st.plotly_chart(fig)
 
-            # Group the DataFrame by menstrual cycle day and calculate the average weight for each day
-            average_weight = df_graph.groupby('Menstrual cycle day')['Weight'].mean()
-
-            # Create a new DataFrame with the average weight and menstrual cycle day
-            average_df = pd.DataFrame({'Menstrual cycle day': average_weight.index, 'Average Weight': average_weight.values})
-
-            # Sort the DataFrame by menstrual cycle day
-            average_df = average_df.sort_values('Menstrual cycle day')
+            average_weight = df_graph.groupby('Menstrual cycle day')['Weight'].mean().reset_index()
 
             # Plot the histogram using Plotly
-            fig = px.bar(average_weight, x='Menstrual cycle day', y='Weight', labels={'Menstrual cycle day': 'Menstrual Cycle Day', 'Weight': 'Average Weight'},
+            fig = px.bar(average_weight, x='Menstrual cycle day', y='Weight', labels={'Menstrual cycle day': 'Menstrual cycle day', 'Weight': 'Weight'},
                          title='Average Weight by Menstrual Cycle Day')
-            
+
+            # Display the plot in Streamlit
             st.plotly_chart(fig)
 
 #             fig, ax = plt.subplots()
