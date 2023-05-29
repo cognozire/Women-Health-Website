@@ -135,8 +135,7 @@ def mainContent():
             average_weight = df_graph.groupby('Menstrual cycle day')['Weight'].mean().reset_index()
 
             # Plot the histogram using Plotly
-            fig = px.bar(average_weight, x='Menstrual cycle day', y='Weight', labels={'Menstrual cycle day': 'Menstrual cycle day', 'Weight': 'Weight'},
-                         title='Average Weight by Menstrual Cycle Day')
+            fig = px.bar(average_weight, x='Menstrual cycle day', y='Weight', labels={'Menstrual cycle day': 'Menstrual cycle day', 'Weight': 'Weight'})
 
             # Display the plot in Streamlit
             st.plotly_chart(fig)
