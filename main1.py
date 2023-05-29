@@ -136,7 +136,7 @@ def mainContent():
             average_df = average_df.sort_values('Menstrual cycle day')
 
             # Plot the histogram using Plotly
-            fig = px.bar(average_weight, x='Menstrual cycle dayy', y='Weight', labels={'Menstrual cycle day': 'Menstrual Cycle Day', 'Weight': 'Average Weight'},
+            fig = px.bar(average_weight, x='Menstrual cycle day', y='Weight', labels={'Menstrual cycle day': 'Menstrual Cycle Day', 'Weight': 'Average Weight'},
                          title='Average Weight by Menstrual Cycle Day')
             
             st.plotly_chart(fig)
